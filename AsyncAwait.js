@@ -27,11 +27,6 @@ async function fetchUsers(){
     console.log(key);
     console.log(data[key]);
   }
-
-  for (var key in githubUser) {
-    console.log(key);
-    console.log(data[key]);
-  }
   
 }
 
