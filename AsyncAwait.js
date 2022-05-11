@@ -16,21 +16,18 @@ Invoke your async function with a few cities as a test
 (Note: the API will only allow you 2 calls per second, so if you are getting errors and you think you 
 shouldn't be, try calling fetching only ONCE per execution.) */
 
-async function fetchUsers(){
-  let res = await fetch("https://geocode.xyz/seattle?json=1");
+async function fetchUsers(cities){
 
-  const data = await res.json();
+  let response = await fetch(`https://geocode.xyz/${cities}?json=1`);
+  let jsonObject = await response.json();
 
-  let githubResponse = await fetch(`https://geocode.xyz/{cities.name}?json=1`);
-  let githubUser = await githubResponse.json();
-  for (var key in githubUser) {
-    console.log(key);
-    console.log(data[key]);
-  }
-  
+	let lattitude = jsonObject.longt
+	let longitude = jsonObject.latt
+	console.log(`Latitude is ${lattitude} Longitude is ${longitude}`)
+
 }
 
-fetchUsers();
+fetchUsers("seattle");
 
 function getRandomNumber(max) {
     return new Promise(resolve => {
